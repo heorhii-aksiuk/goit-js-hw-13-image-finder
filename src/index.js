@@ -12,6 +12,7 @@ listEl.classList.add('gallery');
 const apiService = new ApiService();
 
 
+
 inputEl.addEventListener('input', debounce(onInputChange, 500))
 
 function onInputChange(event) {
@@ -20,7 +21,5 @@ function onInputChange(event) {
   gallerySectionEl.appendChild(listEl);
   apiService.fetchImages().then(data => listEl.insertAdjacentHTML('beforeend', cardTemplate(data)));
 }
-
-console.log(cardTemplate());
 
 
