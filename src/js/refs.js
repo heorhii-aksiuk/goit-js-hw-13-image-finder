@@ -1,5 +1,6 @@
 export default {
   inputEl: document.querySelector('input'),
   gallerySectionEl: document.querySelector('.images-gallery-js'),
-  listEl: document.createElement('ul')
+  buttonEl: document.querySelector('.load-more-btn'),
+  listEl: document.createElement('ul'),
 };
