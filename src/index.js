@@ -31,7 +31,7 @@ function onInputChange(event) {
 
 function onScroll() {
   let contentHeight = bodyEl.offsetHeight;
-  let currentPosition = window.pageYOffset + window.innerHeight;
+  let currentPosition = window.pageYOffset + window.innerHeight * 1.5;
 
   if (currentPosition >= contentHeight) {
     apiService.nextPage();
