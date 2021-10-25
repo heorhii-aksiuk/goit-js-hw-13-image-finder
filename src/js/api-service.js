@@ -9,7 +9,7 @@ export default class ApiService {
 
   fetchImages() {
     const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
-    
+
     return fetch(url).then(response => response.json()).then( ({hits}) => hits)
   }
 
@@ -29,24 +29,3 @@ export default class ApiService {
     this._page = 1;
   }
 }
-
-//tests
-
-const apiService = new ApiService();
-
-apiService.fetchImages();
-apiService.searchQuery = 'cat';
-console.log(apiService.searchQuery);
-
-apiService.nextPage()
-apiService.nextPage();
-// apiService.resetPage();
-
-
-
-console.log(apiService._page);
-console.log();
-console.log();
-console.log();
-console.log();
-
