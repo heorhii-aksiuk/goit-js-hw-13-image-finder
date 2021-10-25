@@ -1,3 +1,3 @@
 export default {
-  formEl: document.getElementById('search-form'),
+  inputEl: document.querySelector('input'),
 };
