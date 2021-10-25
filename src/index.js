@@ -14,20 +14,19 @@ const apiService = new ApiService();
 /*  */
 
 inputEl.addEventListener('input', debounce(onInputChange, 1000));
-window.addEventListener('scroll', onScroll)
-
+window.addEventListener('scroll', onScroll);
 
 function onInputChange(event) {
   event.preventDefault();
-  
+
   apiService.searchQuery = inputEl.value.trim();
-  
+
   if (!apiService.searchQuery.match(/^[a-zA-Z_ ]*$/) || apiService.searchQuery === '') return;
-  
+
   gallerySectionEl.appendChild(listEl);
   listEl.innerHTML = '';
-  apiService.resetPage()
-  createMarkup()
+  apiService.resetPage();
+  createMarkup();
 }
 
 function onScroll() {
@@ -39,7 +38,10 @@ function onScroll() {
     createMarkup();
   }
 }
-  
+
 function createMarkup() {
-  apiService.fetchImages().then(data => listEl.insertAdjacentHTML('beforeend', cardTemplate(data)));
+  apiService
+    .fetchImages()
+    .then(data => listEl.insertAdjacentHTML('beforeend', cardTemplate(data)))
+    .catch(error => console.log(error));
 }
