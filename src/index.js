@@ -9,6 +9,7 @@ import cardTemplate from './templates/image-card.hbs';
 //Other setup
 const { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl } = refs;
 listEl.classList.add('gallery');
+
 const apiService = new ApiService();
 
 /*  */
