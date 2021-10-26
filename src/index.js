@@ -1,27 +1,25 @@
+//Project styles
 import './sass/main.scss';
-
+//Libs
 import debounce from 'lodash.debounce';
-
+//Project files
 import ApiService from './js/api-service';
 import refs from './js/refs';
 import cardTemplate from './templates/image-card.hbs';
-
-const { inputEl, gallerySectionEl, listEl, sentinelEl } = refs;
+//Other setup
+const { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl } = refs;
 listEl.classList.add('gallery');
-
 const apiService = new ApiService();
 
-
 /*  */
-
 
 inputEl.addEventListener('input', debounce(onInputChange, 1000));
 const observer = new IntersectionObserver(onEntry, { rootMargin: '300px' });
 observer.observe(sentinelEl);
 
-
 function onInputChange(event) {
   event.preventDefault();
+  listEl.remove()
 
   apiService.searchQuery = inputEl.value.trim();
 
@@ -33,8 +31,8 @@ function onInputChange(event) {
   createMarkup();
 }
 
-
 async function createMarkup() {
+  errorTextEl.remove()
   try {
     const apiResponse = await apiService.fetchImages();
 
@@ -45,12 +43,13 @@ async function createMarkup() {
     } else {
      throw Error('По вашему запросу ничего не найдено')
     }
-    
+
   } catch (error) {
-    alert(`Ошибка: ${error.message}. Статус запроса: ${apiService.status}`);
+    listEl.remove();
+    gallerySectionEl.appendChild(errorTextEl);
+    errorTextEl.innerHTML = `Ошибка: ${error.message}. Статус запроса: ${apiService.status}`;
   }
 }
-
 
 function onEntry(entries) {
   entries.forEach(entry => {
