@@ -5,9 +5,10 @@ export default class ApiService {
   constructor() {
     this._searchQuery = '';
     this._page = 1;
+    this._statusCode = 404;
   }
 
-  fetchImages() {
+  async fetchImages() {
     const searchParams = new URLSearchParams({
       image_type: 'photo',
       orientation: 'horizontal',
@@ -16,10 +17,19 @@ export default class ApiService {
       per_page: 12,
       key: API_KEY,
     });
-    
+
     const url = `${BASE_URL}/?${searchParams}`;
 
-    return fetch(url).then(response => response.json()).then( ({hits}) => hits)
+    const apifetch = await fetch(url);
+    this._statusCode = apifetch.status;
+    const response = await apifetch.json();
+    const { hits } = response;
+
+    return hits;
+  }
+
+  get status() {
+    return this._statusCode;
   }
 
   get searchQuery() {
