@@ -40,8 +40,11 @@ async function createMarkup() {
       const markup = listEl.insertAdjacentHTML('beforeend', cardTemplate(apiResponse));
       return markup;
 
+    } else if (apiService.total >= 1) {
+      return;
+
     } else {
-     throw Error('По вашему запросу ничего не найдено')
+      throw Error('По вашему запросу ничего не найдено');
     }
 
   } catch (error) {

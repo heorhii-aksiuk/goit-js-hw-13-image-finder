@@ -5,7 +5,8 @@ export default class ApiService {
   constructor() {
     this._searchQuery = '';
     this._page = 1;
-    this._statusCode = 404;
+    this._statusCode = 0;
+    this._total = 0;
   }
 
   async fetchImages() {
@@ -21,30 +22,39 @@ export default class ApiService {
     const url = `${BASE_URL}/?${searchParams}`;
 
     const apifetch = await fetch(url);
-    this._statusCode = apifetch.status;
     const response = await apifetch.json();
     const { hits } = response;
+    this._statusCode = apifetch.status;
+    this._total = response.total;
 
     return hits;
   }
-
+  
+  get searchQuery() {
+    return this._searchQuery;
+  }
+  
+  set searchQuery(newQuery) {
+    this._searchQuery = newQuery;
+  }
+  
+  get page() {
+    return this._page;
+  }
+  
+  nextPage() {
+    this._page += 1;
+  }
+  
+  resetPage() {
+    this._page = 1;
+  }
+  
   get status() {
     return this._statusCode;
   }
 
-  get searchQuery() {
-    return this._searchQuery;
-  }
-
-  set searchQuery(newQuery) {
-    this._searchQuery = newQuery;
-  }
-
-  nextPage() {
-    this._page += 1;
-  }
-
-  resetPage() {
-    this._page = 1;
+  get total() {
+    return this._total;
   }
 }
