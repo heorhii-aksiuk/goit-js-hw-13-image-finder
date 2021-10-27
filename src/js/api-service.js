@@ -5,7 +5,6 @@ export default class ApiService {
   constructor() {
     this._searchQuery = '';
     this._page = 1;
-    this._statusCode = 0;
     this._total = 0;
   }
 
@@ -19,14 +18,11 @@ export default class ApiService {
       key: API_KEY,
     });
 
-    const url = `${BASE_URL}/?${searchParams}`;
-
-    const apifetch = await fetch(url);
+    const apifetch = await fetch(`${BASE_URL}/?${searchParams}`);
     const response = await apifetch.json();
     const { hits } = response;
-    this._statusCode = apifetch.status;
     this._total = response.total;
-
+    
     return hits;
   }
   
@@ -48,10 +44,6 @@ export default class ApiService {
   
   resetPage() {
     this._page = 1;
-  }
-  
-  get status() {
-    return this._statusCode;
   }
 
   get total() {

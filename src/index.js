@@ -51,7 +51,11 @@ async function createMarkup() {
   } catch (error) {
     listEl.remove();
     gallerySectionEl.appendChild(errorTextEl);
-    errorTextEl.innerHTML = `Ошибка: ${error.message}. Статус запроса: ${apiService.status}`;
+    if (error.message === 'По вашему запросу ничего не найдено') {
+      errorTextEl.innerHTML = error.message;
+    } else {
+      errorTextEl.innerHTML = `Что-то пошло не так... ${error.message}.`;
+    }
   }
 }
 
