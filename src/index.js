@@ -9,7 +9,7 @@ listEl.classList.add('gallery');
 
 /*  */
 
-inputEl.addEventListener('input', debounce(onInputChange, 1000));
+inputEl.addEventListener('input', debounce(onInputChange, 500));
 const observer = new IntersectionObserver(onEntry, { rootMargin: '300px' });
 observer.observe(sentinelEl);
 
@@ -28,7 +28,7 @@ function onInputChange(event) {
 }
 
 async function createMarkup() {
-  const nothingFound = 'По вашему запросу ничего не найдено';
+  const nothingFound = 'По этому запросу ничего не найдено';
   errorTextEl.remove();
 
   try {
