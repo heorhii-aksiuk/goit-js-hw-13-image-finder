@@ -7,7 +7,6 @@ import cardTemplate from './templates/image-card.hbs';
 const apiService = new ApiService();
 listEl.classList.add('gallery');
 
-/*  */
 
 inputEl.addEventListener('input', debounce(onInputChange, 500));
 const observer = new IntersectionObserver(onEntry, { rootMargin: '300px' });
@@ -61,5 +60,9 @@ function createErrorMessage(error, nothingFound) {
   const errorText = 'Что-то пошло не так...'
   errorTextEl.innerHTML =
     error.message === nothingFound ? error.message : `${errorText} ${error.message}`;
+}
+
+function getFullImage() {
+  return console.log('test');
 }
 
