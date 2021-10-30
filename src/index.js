@@ -62,7 +62,5 @@ function createErrorMessage(error, nothingFound) {
     error.message === nothingFound ? error.message : `${errorText} ${error.message}`;
 }
 
-function getFullImage() {
-  return console.log('test');
-}
+// написать функцию для открытия фулл картинки
 
