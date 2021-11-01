@@ -77,21 +77,20 @@ function openFullImage(event) {
   event.preventDefault()
   if (event.target.nodeName !== 'IMG') return;
   openModal(event);
-
 }
 
 function openModal(event) {
-  modalEl.classList.add('is-open');
   moldalImg.src = event.target.dataset.source;
+  modalEl.classList.add('is-open');
   closeModalBtn.addEventListener('click', onCloseBtnClick)
 }
 
 function closeModal() {
-  moldalImg.src = '';
   modalEl.classList.remove('is-open')
   closeModalBtn.removeEventListener('click', onCloseBtnClick);
 }
 
 function onCloseBtnClick() {
   closeModal();
+  moldalImg.src = '';
 }
