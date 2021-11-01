@@ -5,6 +5,7 @@ const refs = {
   errorTextEl: document.createElement('p'),
   sentinelEl: document.querySelector('.sentinel'),
   modalEl: document.querySelector('.js-lightbox'),
+  closeModalBtn: document.querySelector('.lightbox__button'),
 };
 
-export const { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl, modalEl } = refs;
+export const { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl, modalEl, closeModalBtn } = refs;

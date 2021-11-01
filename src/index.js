@@ -1,7 +1,15 @@
 import './sass/main.scss';
 import debounce from 'lodash.debounce';
 import ApiService from './js/api-service';
-import { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl } from './js/refs';
+import {
+  inputEl,
+  gallerySectionEl,
+  listEl,
+  sentinelEl,
+  errorTextEl,
+  modalEl,
+  closeModalBtn,
+} from './js/refs';
 import cardTemplate from './templates/image-card.hbs';
 
 const apiService = new ApiService();
@@ -67,5 +75,20 @@ function createErrorMessage(error, nothingFound) {
 function openFullImage(event) {
   event.preventDefault()
   if (event.target.nodeName !== 'IMG') return;
+  openModal();
 
+}
+
+function openModal() {
+  modalEl.classList.add('is-open');
+  closeModalBtn.addEventListener('click', onCloseBtnClick)
+}
+
+function closeModal() {
+  modalEl.classList.remove('is-open')
+  closeModalBtn.removeEventListener('click', onCloseBtnClick);
+}
+
+function onCloseBtnClick() {
+  closeModal();
 }
