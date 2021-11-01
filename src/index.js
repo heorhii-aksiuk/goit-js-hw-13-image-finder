@@ -62,5 +62,4 @@ function createErrorMessage(error, nothingFound) {
     error.message === nothingFound ? error.message : `${errorText} ${error.message}`;
 }
 
-// написать функцию для открытия фулл картинки
 
