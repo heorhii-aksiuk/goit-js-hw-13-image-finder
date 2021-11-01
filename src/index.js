@@ -9,6 +9,8 @@ listEl.classList.add('gallery');
 
 
 inputEl.addEventListener('input', debounce(onInputChange, 500));
+listEl.addEventListener('click', openFullImage)
+
 const observer = new IntersectionObserver(onEntry, { rootMargin: '300px' });
 observer.observe(sentinelEl);
 
@@ -62,4 +64,8 @@ function createErrorMessage(error, nothingFound) {
     error.message === nothingFound ? error.message : `${errorText} ${error.message}`;
 }
 
+function openFullImage(event) {
+  event.preventDefault()
+  if (event.target.nodeName !== 'IMG') return;
 
+}
