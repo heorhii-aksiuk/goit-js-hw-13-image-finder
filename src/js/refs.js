@@ -6,6 +6,16 @@ const refs = {
   sentinelEl: document.querySelector('.sentinel'),
   modalEl: document.querySelector('.js-lightbox'),
   closeModalBtn: document.querySelector('.lightbox__button'),
+  moldalImg: document.querySelector('.lightbox__image'),
 };
 
-export const { inputEl, gallerySectionEl, listEl, sentinelEl, errorTextEl, modalEl, closeModalBtn } = refs;
+export const {
+  inputEl,
+  gallerySectionEl,
+  listEl,
+  sentinelEl,
+  errorTextEl,
+  modalEl,
+  closeModalBtn,
+  moldalImg,
+} = refs;

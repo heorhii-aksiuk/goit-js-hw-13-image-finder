@@ -9,6 +9,7 @@ import {
   errorTextEl,
   modalEl,
   closeModalBtn,
+  moldalImg,
 } from './js/refs';
 import cardTemplate from './templates/image-card.hbs';
 
@@ -75,16 +76,18 @@ function createErrorMessage(error, nothingFound) {
 function openFullImage(event) {
   event.preventDefault()
   if (event.target.nodeName !== 'IMG') return;
-  openModal();
+  openModal(event);
 
 }
 
-function openModal() {
+function openModal(event) {
   modalEl.classList.add('is-open');
+  moldalImg.src = event.target.dataset.source;
   closeModalBtn.addEventListener('click', onCloseBtnClick)
 }
 
 function closeModal() {
+  moldalImg.src = '';
   modalEl.classList.remove('is-open')
   closeModalBtn.removeEventListener('click', onCloseBtnClick);
 }
