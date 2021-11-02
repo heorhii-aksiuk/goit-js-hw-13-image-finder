@@ -19,7 +19,6 @@ listEl.classList.add('gallery');
 
 inputEl.addEventListener('input', debounce(onInputChange, 500));
 listEl.addEventListener('click', openFullImage)
-
 const observer = new IntersectionObserver(onEntry, { rootMargin: '300px' });
 observer.observe(sentinelEl);
 
